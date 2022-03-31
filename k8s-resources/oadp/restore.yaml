@@ -1,0 +1,12 @@
+apiVersion: cluster.open-cluster-management.io/v1beta1
+kind: Restore
+metadata:
+  name: restore-hub-2
+  namespace: open-cluster-management-backup
+spec:
+  cleanupBeforeRestore: CleanupRestored
+  restoreSyncInterval: 10m
+  syncRestoreWithNewBackups: true
+  veleroCredentialsBackupName: latest
+  veleroManagedClustersBackupName: latest
+  veleroResourcesBackupName: latest
