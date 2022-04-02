@@ -50,3 +50,27 @@ spec:
         remediationAction: inform
         severity: low
   remediationAction: inform
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: validate-etcd-encryption-placement
+  namespace: default
+placementRef:
+  apiGroup: apps.open-cluster-management.io
+  kind: PlacementRule
+  name: validate-etcd-encryption-placement
+subjects:
+- apiGroup: policy.open-cluster-management.io
+  kind: Policy
+  name: validate-etcd-encryption
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  name: validate-etcd-encryption-placement
+  namespace: default
+spec:
+  clusterConditions:
+    - type: ManagedClusterConditionAvailable
+      status: "True"
