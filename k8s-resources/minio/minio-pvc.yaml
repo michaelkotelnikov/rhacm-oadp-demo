@@ -4,7 +4,7 @@ metadata:
   labels:
     app.kubernetes.io/name: minio
   name: minio
-  namespace: open-cluster-management-observability
+  namespace: open-cluster-management-backup
 spec:
   storageClassName: managed-premium
   accessModes:
