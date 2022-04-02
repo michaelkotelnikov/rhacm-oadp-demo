@@ -4,5 +4,5 @@ metadata:
   name: acm-hub-a
   namespace: open-cluster-management-backup
 spec:
-  veleroSchedule: 0 */2 * * *
+  veleroSchedule: 0 */1 * * *
   veleroTtl: 240h
