@@ -1,7 +1,7 @@
 apiVersion: oadp.openshift.io/v1alpha1
 kind: DataProtectionApplication
 metadata:
-  name: dpa-sample
+  name: dpa
 spec:
   configuration:
     velero:
@@ -16,22 +16,13 @@ spec:
         provider: aws
         default: true
         objectStorage:
-          bucket: thanos
-          prefix: my-prefix
+          bucket: hub-backup
+          prefix: acm
         config:
-          region: us-east-1
-                #          profile: "default"
-          s3Url: https://minio-open-cluster-management-backup.apps.ztp-test.cloudlet-dev.com
+          region: minio
+          s3Url: https://minio-open-cluster-management-backup.apps.hub-a.<fqdn>
+          s3ForcePathStyle: "true"
           insecureSkipTLSVerify: "true"
         credential:
           name: cloud-credentials
           key: cloud
-  snapshotLocations:
-    - name: default
-      velero:
-        provider: aws
-        config:
-          s3Url: https://minio-open-cluster-management-backup.apps.ztp-test.cloudlet-dev.com
-          insecureSkipTLSVerify: "true"
-          region: us-west-1
-                #          profile: "default"
